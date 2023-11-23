@@ -124,6 +124,10 @@
         padding: 5px 15px;
     }
 
+    .login_form_section {
+        height: 140vh;
+    }
+
     .login_form_section_2 {
         height: 150vh;
     }
@@ -232,6 +236,10 @@
 @media (min-width: 767px) and (max-width: 1200px) {
     .container {
         padding: 7px 10px;
+    }
+
+    .login_form_section {
+        height: 130vh;
     }
 
     .login_form_section_2 {
