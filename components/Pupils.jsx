@@ -142,10 +142,6 @@ const PupilsAddClient = () => {
                             {soat.map((watch, index) => (
                                 <option key={index}>{watch}-soat</option>
                             ))}
-
-                            <option>Kun bo`yicha</option>
-                            <option>1-kun</option>
-                            <option>Sababli</option>
                         </select>
 
                         {newDarsQoldirish === "" && (
