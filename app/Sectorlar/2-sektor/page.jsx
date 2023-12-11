@@ -6,8 +6,6 @@ import Link from "next/link";
 import Navbar from "../../../components/Navbar2";
 import RemoveBtn from "../../../components/RemoveBtn";
 import { CiTextAlignRight } from "react-icons/ci";
-import Aos from "aos";
-import "aos/dist/aos.css";
 
 const getTopics = async () => {
   try {
@@ -26,10 +24,6 @@ const getTopics = async () => {
 };
 
 const Filter = () => {
-  useEffect(() => {
-    Aos.init({ duration: 1000 });
-  }, []);
-
   const [topiclar, setTopiclar] = useState([]);
   const [filteredMavzula, setFilteredMavzula] = useState([]);
   const [filterValue, setFilterValue] = useState({
@@ -171,7 +165,7 @@ const Filter = () => {
                 Darsga qatnashmagan o`quvchilar
               </h1>
               {showModal && (
-                <div data-aos="fade-down" className="z-50 fixed right-0 flex justify-center items-center min-h-screen blur2 w-full top-0">
+                <div className="fixed right-0 flex justify-center items-center min-h-screen blur2 w-full top-0">
                   <div className="flex flex-col text-white">
                     <h1 className="text-center font-bold text-4xl uppercase">{`${clickedNewIsm} `}</h1>
                     <p className="text-2xl mt-3">
@@ -317,7 +311,7 @@ const Filter = () => {
                     </div>
                   </div>
 
-                  <table data-aos="fade-down" className="main_table w-full shadow-xl -z-50">
+                  <table className="main_table w-full shadow-xl">
                     <thead className="green text-white font-bold poppins-2">
                       <tr>
                         <th className="admin_panel_th admin_panel-tih py-5 px-2 poppins-2">
