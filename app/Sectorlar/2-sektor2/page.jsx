@@ -5,6 +5,7 @@ import { BsChevronDown, BsChevronUp } from "react-icons/bs";
 import Link from "next/link";
 import Navbar from "../../../components/Navbar2";
 import RemoveBtn from "../../../components/RemoveBtn";
+import { CiTextAlignRight } from "react-icons/ci";
 
 const getTopics = async () => {
     try {
@@ -31,6 +32,7 @@ const Filter = () => {
         school: "",
     });
     const [hide, setHide] = useState(false);
+    const [isLoading, setIsLoading] = useState(true);
 
     const handleHide = () => {
         setHide(!hide);
@@ -38,13 +40,22 @@ const Filter = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const a = await getTopics();
-            const topiclar = a?.topiclar;
+            try {
+                setIsLoading(true); // Set loading to true when starting to fetch data
 
-            const filteredTopics = topiclar.filter((t) => t.MFY === "2-sektor");
+                const a = await getTopics();
+                const topiclar = a?.topiclar;
 
-            setTopiclar(filteredTopics);
-            setFilteredMavzula(filteredTopics);
+                const filteredTopics = topiclar.filter((t) => t.MFY === "2-sektor");
+
+                setTopiclar(filteredTopics);
+                setFilteredMavzula(filteredTopics);
+            } catch (error) {
+                console.log("Mavzular yuklanishda xatolik: ", error);
+                setFilteredMavzula([]);
+            } finally {
+                setIsLoading(false); // Set loading to false after data is fetched
+            }
         };
 
         fetchData();
@@ -75,8 +86,10 @@ const Filter = () => {
                 t.school.toLowerCase().includes(filterValue.school.toLowerCase()) &&
                 t.MFY === "2-sektor"
         );
+
         setFilteredMavzula(filteredArray);
     };
+
 
     const getRowBackgroundColor = (index) => {
         if (index % 2 === 0) {
@@ -99,8 +112,7 @@ const Filter = () => {
         }
     };
 
-    const [showOrganilgan, setShowOrganilgan] = useState(true); // Step 1
-
+    const [showOrganilgan, setShowOrganilgan] = useState(true);
 
     const handleOrganilganClick = () => {
         setShowOrganilgan(!showOrganilgan);
@@ -110,6 +122,36 @@ const Filter = () => {
 
     const handleFilterStatus = (status) => {
         setFilterStatus(status);
+    };
+
+    const [clickedNewIsm, setClickedNewIsm] = useState(null);
+    const [clickedNewDars, setClickedNewDars] = useState(null);
+    const [clickedNewDarsList, setClickedNewDarsList] = useState([]);
+
+    const handleClick = (newIsm) => {
+        setClickedNewIsm(newIsm);
+
+        const newDarsList = filteredMavzula
+            .filter((t) => t.newIsm === newIsm)
+            .map((t) => parseInt(t.newDarsQoldirish))
+            .filter((hours) => !isNaN(hours));
+
+        const totalHours = newDarsList.reduce((acc, hours) => acc + hours, 0);
+
+        setClickedNewDarsList({
+            list: newDarsList,
+            totalHours: totalHours,
+        });
+        openModal();
+    };
+    const [showModal, setShowModal] = useState(false);
+
+    const openModal = () => {
+        setShowModal(true);
+    };
+
+    const closeModal = () => {
+        setShowModal(false);
     };
 
     return (
@@ -122,6 +164,24 @@ const Filter = () => {
                             <h1 className="admin_panel_text text-4xl mt-3 mb-3 font-bold poppins">
                                 Darsga qatnashmagan o`quvchilar
                             </h1>
+                            {showModal && (
+                                <div className="fixed right-0 flex justify-center items-center min-h-screen blur2 w-full top-0">
+                                    <div className="flex flex-col text-white">
+                                        <h1 className="text-center font-bold text-4xl uppercase">{`${clickedNewIsm} `}</h1>
+                                        <p className="text-2xl mt-3">
+                                            Dars qoldirgan jami soati: {clickedNewDarsList.totalHours} soat
+                                        </p>
+                                        <div className="flex justify-end">
+                                            <button
+                                                className="green text-white rounded-md text-xl py-2 px-3"
+                                                onClick={closeModal} // Close the modal when this button is clicked
+                                            >
+                                                Orqaga
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            )}
                         </div>
                         {/* <Link href={"/newPupils"}>Bugungi kiritilgan o`quvchilar</Link> */}
                         <div className="flex gap-3 items-center katta_main_div_edi">
@@ -218,117 +278,133 @@ const Filter = () => {
                         </div>
                     ) : null}
                 </div>
-                <div className="mb-4">
-                    {Object.keys(usersAddedByDate)
-                        .reverse()
-                        .map((date) => (
-                            <div key={date}>
-                                <div className="flex gap-2 items-center mt-10 justify-between mb-5">
-                                    <h3 className="text-2xl font-bold poppins">
-                                        {date} sanasida kiritilgan o`quvchilar:
-                                    </h3>
-                                    <div className="flex gap-2">
-                                        <button
-                                            className={`${filterStatus === true ? "green" : "green"
-                                                } text-white px-4 py-2 rounded-md cursor-pointer`}
-                                            onClick={() => handleFilterStatus(true)}
-                                        >
-                                            O`rganilgan
-                                        </button>
-                                        <button
-                                            className={`${filterStatus === false ? "bg-red-700" : "bg-red-700"
-                                                } text-white px-4 py-2 rounded-md cursor-pointer`}
-                                            onClick={() => handleFilterStatus(false)}
-                                        >
-                                            O`rganilmagan
-                                        </button>
-                                    </div>
-                                </div>
-                                <table className="main_table w-full shadow-xl">
-                                    <thead className="green text-white font-bold poppins-2">
-                                        <tr>
-                                            <th className="admin_panel_th admin_panel-tih py-5 px-2 poppins-2">
-                                                №
-                                            </th>
-                                            <th className="admin_panel_th py-4 px-2 poppins-2">
-                                                Ism
-                                            </th>
-                                            <th className="admin_panel_th py-4 px-2 poppins-2">
-                                                Telefon raqami
-                                            </th>
-                                            <th className="admin_panel_th py-4 px-2 poppins-2">
-                                                Maktab
-                                            </th>
-                                            <th className="admin_panel_th py-4 px-2 poppins-2">
-                                                Sinf
-                                            </th>
-                                            <th className="admin_panel_th py-4 px-2 poppins-2">
-                                                Sektor
-                                            </th>
-                                            <th className="admin_panel_th py-4 px-2 poppins-2">
-                                                Yashash manzili
-                                            </th>
-                                            <th className="admin_panel_th py-4 px-2 poppins-2">
-                                                Kiritilgan vaqti
-                                            </th>
-                                            <th className="admin_panel_th py-4 px-2 poppins-2">
-                                                Qoldirgan dars vaqti
-                                            </th>
-                                            <th className="admin_panel_th py-4 px-2 poppins-2"></th>
-                                            <th className="admin_panel_th py-4 px-2 poppins-2"></th>
-                                        </tr>
-                                    </thead>
-                                    {usersAddedByDate[date]
-                                        .filter((t) =>
-                                            filterStatus === null ? true : t.isChecked === filterStatus
-                                        )
-                                        .map((t, index) => (
-                                            <tbody key={t.id} className="text-center w-full">
-                                                <tr className={`${getRowBackgroundColor(index)} w-full`}>
-                                                    <td className="px-2 py-4 admin_panel_td admin_panel-tih admin_panel_index ">
-                                                        {index + 1}
-                                                    </td>
-                                                    <td className="px-2 py-4 admin_panel_td">{t.newIsm}</td>
-                                                    <td className="px-2 py-4 admin_panel_td">
-                                                        {t.telephoneRaqami}
-                                                    </td>
-                                                    <td className="px-2 py-4 admin_panel_td">{t.school}</td>
-                                                    <td className="admin_panel_td">{t.newSinfi}</td>
-                                                    <td className="px-2 py-4 admin_panel_td">{t.MFY}</td>
-                                                    <td className="px-2 py-4 admin_panel_td">
-                                                        {t.manzili}
-                                                    </td>
-                                                    <td className="px-2 py-4 admin_panel_td">
-                                                        {new Date(t.createdAt).toLocaleString()}
-                                                    </td>
-                                                    <td className="px-2 py-4 admin_panel_td">
-                                                        {t.newDarsQoldirish}
-                                                    </td>
-                                                    <td className="">
-                                                        <RemoveBtn id={t._id} />
-                                                    </td>
-                                                    <td>
+                {isLoading ? (
+                    <div className="flex items-center justify-center h-[60vh]">
+                        <span className="loader"></span>
+                    </div>
+                ) : (
 
-                                                        <button onClick={() => changeStatus(t._id)} className={`py-2 ml-2 px-2 ${t.isChecked
-                                                            ? "text-white green rounded-md cursor-pointer"
-                                                            : "text-white bg-red-700 rounded-md cursor-pointer"
-                                                            }`}>
-                                                            {t.isChecked ? "O'rganilgan" : "O'rganilmagan"}
-                                                        </button>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        ))}
-                                </table>
-                            </div>
-                        ))}
-                </div>
+                    <div className="mb-4">
+                        {Object.keys(usersAddedByDate)
+                            .reverse()
+                            .map((date) => (
+                                <div key={date}>
+                                    <div className="flex gap-2 items-center mt-10 justify-between mb-5">
+                                        <h3 className="text-2xl font-bold poppins">
+                                            {date} sanasida kiritilgan o`quvchilar:
+                                        </h3>
+                                        <div className="flex gap-2">
+                                            <button
+                                                className={`${filterStatus === true ? "green" : "green"
+                                                    } text-white px-4 py-2 rounded-md cursor-pointer`}
+                                                onClick={() => handleFilterStatus(true)}
+                                            >
+                                                O`rganilgan
+                                            </button>
+                                            <button
+                                                className={`${filterStatus === false ? "bg-red-700" : "bg-red-700"
+                                                    } text-white px-4 py-2 rounded-md cursor-pointer`}
+                                                onClick={() => handleFilterStatus(false)}
+                                            >
+                                                O`rganilmagan
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                    <table className="main_table w-full shadow-xl">
+                                        <thead className="green text-white font-bold poppins-2">
+                                            <tr>
+                                                <th className="admin_panel_th admin_panel-tih py-5 px-2 poppins-2">
+                                                    №
+                                                </th>
+                                                <th className="admin_panel_th py-4 px-2 poppins-2">
+                                                    Ism
+                                                </th>
+                                                <th className="admin_panel_th py-4 px-2 poppins-2">
+                                                    Telefon raqami
+                                                </th>
+                                                <th className="admin_panel_th py-4 px-2 poppins-2">
+                                                    Maktab
+                                                </th>
+                                                <th className="admin_panel_th py-4 px-2 poppins-2">
+                                                    Sinf
+                                                </th>
+                                                <th className="admin_panel_th py-4 px-2 poppins-2">
+                                                    Sektor
+                                                </th>
+                                                <th className="admin_panel_th py-4 px-2 poppins-2">
+                                                    Yashash manzili
+                                                </th>
+                                                <th className="admin_panel_th py-4 px-2 poppins-2">
+                                                    Kiritilgan vaqti
+                                                </th>
+                                                <th className="admin_panel_th py-4 px-2 poppins-2">
+                                                    Qoldirgan dars vaqti
+                                                </th>
+                                                <th className="admin_panel_th py-4 px-2 poppins-2"></th>
+                                                <th className="admin_panel_th py-4 px-2 poppins-2"></th>
+                                                <th className="admin_panel_th py-4 px-2 poppins-2"></th>
+                                            </tr>
+                                        </thead>
+                                        {usersAddedByDate[date]
+                                            .filter((t) =>
+                                                filterStatus === null ? true : t.isChecked === filterStatus
+                                            )
+                                            .map((t, index) => (
+                                                <tbody key={t.id} className="text-center w-full">
+                                                    <tr className={`${getRowBackgroundColor(index)} w-full`}>
+                                                        <td className="px-2 py-4 admin_panel_td admin_panel-tih admin_panel_index ">
+                                                            {index + 1}
+                                                        </td>
+                                                        <td className="px-2 py-4 admin_panel_td">{t.newIsm}</td>
+                                                        <td className="px-2 py-4 admin_panel_td">
+                                                            {t.telephoneRaqami}
+                                                        </td>
+                                                        <td className="px-2 py-4 admin_panel_td">{t.school}</td>
+                                                        <td className="admin_panel_td">{t.newSinfi}</td>
+                                                        <td className="px-2 py-4 admin_panel_td">{t.MFY}</td>
+                                                        <td className="px-2 py-4 admin_panel_td">
+                                                            {t.manzili}
+                                                        </td>
+                                                        <td className="px-2 py-4 admin_panel_td">
+                                                            {new Date(t.createdAt).toLocaleString()}
+                                                        </td>
+                                                        <td className="px-2 py-4 admin_panel_td">
+                                                            {t.newDarsQoldirish}
+                                                        </td>
+                                                        <td className="">
+                                                            <RemoveBtn id={t._id} />
+                                                        </td>
+                                                        <td>
+                                                            <button onClick={() => changeStatus(t._id)} className={`py-2 ml-2 px-2 ${t.isChecked
+                                                                ? "text-white green rounded-md cursor-pointer"
+                                                                : "text-white bg-red-700 rounded-md cursor-pointer"
+                                                                }`}>
+                                                                {t.isChecked ? "O'rganilgan" : "O'rganilmagan"}
+                                                            </button>
+                                                        </td>
+                                                        <td>
+                                                            <CiTextAlignRight className="text-4xl cursor-pointer" onClick={() => handleClick(t.newIsm, t.newDarsQoldirish)} />
+                                                        </td>
+                                                    </tr>
+                                                </tbody>
+                                            ))}
+                                    </table>
+                                </div>
+                            ))
+                        }
+                    </div>
+                )}
             </div>
         </div>
     );
 };
 
 export default Filter;
+
+
+
+
 
 
 
