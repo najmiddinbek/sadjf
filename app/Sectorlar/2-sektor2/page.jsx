@@ -372,9 +372,6 @@ const Filter = () => {
                                                         <td className="px-2 py-4 admin_panel_td">
                                                             {t.newDarsQoldirish}
                                                         </td>
-                                                        <td className="">
-                                                            <RemoveBtn id={t._id} />
-                                                        </td>
                                                         <td>
                                                             <button onClick={() => changeStatus(t._id)} className={`py-2 ml-2 px-2 ${t.isChecked
                                                                 ? "text-white green rounded-md cursor-pointer"
