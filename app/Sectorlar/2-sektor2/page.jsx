@@ -4,7 +4,6 @@ import React, { useState, useEffect } from "react";
 import { BsChevronDown, BsChevronUp } from "react-icons/bs";
 import Link from "next/link";
 import Navbar from "../../../components/Navbar2";
-import RemoveBtn from "../../../components/RemoveBtn";
 import { CiTextAlignRight } from "react-icons/ci";
 
 const getTopics = async () => {
