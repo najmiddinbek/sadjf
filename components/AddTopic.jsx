@@ -36,7 +36,7 @@ const PupilsAddClient = () => {
                 router.push("/addTopic");
                 toast.success("O`quvchi malumotlari muvaffaqiyatli qo`shildi!", {
                     position: "top-center",
-                    autoClose: 5000,
+                    autoClose: 10000,
                     hideProgressBar: false,
                     closeOnClick: true,
                     pauseOnHover: true,

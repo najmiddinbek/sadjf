@@ -107,6 +107,7 @@ const Filter = () => {
             });
 
             if (res.ok) {
+                location.reload();
             }
         }
     };

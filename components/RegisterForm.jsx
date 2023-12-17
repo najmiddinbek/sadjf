@@ -63,7 +63,7 @@ export default function RegisterForm() {
                 router.push("/simplePage");
                 toast.success('You have successfully registered!', {
                     position: "top-center",
-                    autoClose: 5000,
+                    autoClose: 10000,
                     hideProgressBar: false,
                     closeOnClick: true,
                     pauseOnHover: true,
