@@ -6,7 +6,8 @@ import Prokratura from "../../public/mdm++++ 3.png"
 import Prokratura2 from "../../public/Remove-bg.ai_1700556647313.png"
 import Diagramma from "../../components/Diagramma"
 
-export default function page() {
+export default function SuperAdmin() {
+
     return (
         <>
             <div className='super_admin_page'>
