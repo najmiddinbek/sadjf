@@ -1,7 +1,6 @@
 'use client'
 
 import React, { useState, useEffect } from 'react';
-import Chart from "react-apexcharts";
 
 const getTopics = async () => {
     try {
@@ -157,77 +156,29 @@ const App = () => {
 
 
 
-    const [descriptiveChartData, setDescriptiveChartData] = useState([/* your data for descriptive chart */]);
 
-    useEffect(() => {
-        const fetchData = async () => {
-            const a = await getTopics();
-            const topiclar = a?.topiclar;
+    // useEffect(() => {
+    //     const fetchData = async () => {
+    //         const a = await getTopics();
+    //         const topiclar = a?.topiclar;
 
-            const filteredTopics = topiclar?.filter((t) => t.MFY === '2-sektor') ?? [];
+    //         const filteredTopics = topiclar?.filter((t) => t.MFY === '2-sektor') ?? [];
 
-            setTopiclar(filteredTopics);
-            setFilteredMavzula(filteredTopics);
-            const usersGroupedByDate = filteredTopics.reduce((acc, t) => {
-                const dateKey = new Date(t.createdAt).toLocaleDateString();
-                acc[dateKey] = (acc[dateKey] || 0) + 1;
-                return acc;
-            }, {});
+    //         setTopiclar(filteredTopics);
+    //         setFilteredMavzula(filteredTopics);
+    //         const usersGroupedByDate = filteredTopics.reduce((acc, t) => {
+    //             const dateKey = new Date(t.createdAt).toLocaleDateString();
+    //             acc[dateKey] = (acc[dateKey] || 0) + 1;
+    //             return acc;
+    //         }, {});
 
-            setUsersAddedByDate(usersGroupedByDate);
+    //         setUsersAddedByDate(usersGroupedByDate);
+    //     };
 
-            // Update chart data directly
-            const chartCategories = Object.keys(usersGroupedByDate);
-            const chartDataValues = Object.values(usersGroupedByDate);
-
-            setChartData({
-                options: {
-                    chart: {
-                        id: "basic-bar"
-                    },
-                    xaxis: {
-                        categories: chartCategories,
-                    },
-                },
-                series: [
-                    {
-                        name: "Sanalik kiritilgan o'quvchilar",
-                        data: chartDataValues,
-                        backgroundColor: 'rgba(75,192,192,0.2)',
-                        borderColor: 'rgba(75,192,192,1)',
-                        borderWidth: 1,
-                    },
-                ],
-            });
-        };
-
-        fetchData();
-    }, [filteredMavzula]);
+    //     fetchData();
+    // }, [filteredMavzula]);
 
 
-
-
-    const [chartData, setChartData] = useState({
-        options: {
-            chart: {
-                id: "basic-bar"
-            },
-            xaxis: {
-                categories: [1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999],
-                labels: {
-                    style: {
-                        colors: ['#fff', '#fff', '#fff', '#fff', '#fff', '#fff', '#fff', '#fff', '#fff']
-                    }
-                }
-            }
-        },
-        series: [
-            {
-                name: "series-1",
-                data: [1, 1, 1, 1, 1, 1, 1, 1]
-            }
-        ]
-    });
 
 
 
@@ -240,9 +191,6 @@ const App = () => {
                         {date}: {index > 0 ? "Avvalgi kundan farqi " : ""}{percentageIncreaseByDate[date]}%
                     </p>
                 ))}
-            </div>
-            <div className="flex justify-center">
-                <Chart options={chartData.options} series={chartData.series} type="bar" width={1400} />
             </div>
             <div className="mb-4">
                 <h2 className="text-3xl text-white font-bold mb-2">Sababli dars qoldirilgan o`quvchilar</h2>
