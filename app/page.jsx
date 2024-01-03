@@ -2,8 +2,9 @@ import LoginForm from "../components/LoginForm";
 
 export default function Home() {
   return (
-    <main>
+    <div>
+      <h1>Yangiladi</h1>
       <LoginForm />
-    </main>
+    </div>
   );
 }
