@@ -223,17 +223,6 @@
         width: 100%;
     }
 
-    .login_form_section {
-        background-image: url("../public/541bf63f653c477059f8d35cb155994e1224.jpg");
-        width: 100%;
-        height: 200%;
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: center;
-        background-attachment: fixed;
-        position: relative;
-    }
-
     .page_text {
         font-size: 150%;
         text-align: center;
