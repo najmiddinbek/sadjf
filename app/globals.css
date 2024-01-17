@@ -175,6 +175,10 @@
         padding: 5px 15px;
     }
 
+    .login_form_section {
+        position: fixed;
+    }
+
 
     .asosiy_button {
         text-align: end;
@@ -219,8 +223,15 @@
         width: 100%;
     }
 
-    .login_form_section_2 {
-        height: 150vh;
+    .login_form_section {
+        background-image: url("../public/541bf63f653c477059f8d35cb155994e1224.jpg");
+        width: 10%;
+        height: 10%;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+        position: relative;
     }
 
     .page_text {
@@ -435,4 +446,9 @@
     100% {
         transform: rotate(360deg);
     }
+}
+
+
+body {
+    background: black;
 }

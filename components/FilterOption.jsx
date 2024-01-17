@@ -163,7 +163,7 @@ export default function FilterOption({ setShaxsiy, setSetShaxs, setManzili, setT
                     Telefon raqami
                 </label>
 
-                <select className="w-full text-[13px] p-3 border rounded-md" onChange={handleTelefonChange}>
+                <select className="w-full text-[13px] text-black p-3 border rounded-md" onChange={handleTelefonChange}>
                     <option value="" >Tanlang</option>
                     {mavzula
                         .filter((mavzu) => mavzu.shaxs === selectedName)
