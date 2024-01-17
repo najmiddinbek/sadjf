@@ -4,7 +4,6 @@ export default function Home() {
   return (
     <div>
       <LoginForm />
-      1
     </div>
   );
 }
