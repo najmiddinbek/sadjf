@@ -90,7 +90,6 @@
     background: rgb(0, 0, 0, 0.8);
     width: 100%;
     min-height: max-content;
-    z-index: 111111;
 }
 
 /* body {
@@ -437,7 +436,7 @@
     }
 }
 
-
+/* 
 body {
     background: black;
-}
+} */
