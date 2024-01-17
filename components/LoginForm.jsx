@@ -84,53 +84,55 @@ export default function LoginForm() {
 
   return (
     <div className="login_form_section">
-      <div className="container mx-auto">
-        <div className="login_section flex justify-between items-center h-[100vh]">
-          <div data-aos="fade-down" className="login_section_left w-[50%] border-r-2 mr-10 pr-">
-            {/* Saqlangan matnni o'qib olish */}
-            <h1 className="xl:text-[45px] login_text  text-white font-[700] leading-[80px] tracking-[2%]">
-              Hurmatli foydalanuvchi <br /> Login parolingizni Kiriting.
-            </h1>
-            <div className="flex justify-center">
-              <Image className="login_image -ml-[100px]" src={Logtip} width={600} height={200} alt="Image" />
+      <div className="black_element">
+        <div className="container mx-auto">
+          <div className="login_section flex justify-between items-center h-[100vh]">
+            <div data-aos="fade-down" className="login_section_left w-[50%] border-r-2 mr-10 pr-">
+              {/* Saqlangan matnni o'qib olish */}
+              <h1 className="xl:text-[45px] hidden md:block login_text  text-white font-[700] leading-[80px] tracking-[2%]">
+                Hurmatli foydalanuvchi <br /> Login parolingizni Kiriting.
+              </h1>
+              <div className="flex justify-center">
+                <Image className="login_image -ml-[100px]" src={Logtip} width={600} height={200} alt="Image" />
+              </div>
             </div>
-          </div>
-          <form data-aos="fade-up" onSubmit={handleSubmit} className="login_form flex flex-col rounded-[20px] w-[50%]">
-            <h1 className="text-3xl  text-white font-[700] leading-[80px] tracking-[2%]">
-              LOGIN BILAN KIRISH
-            </h1>
-            <p className="text-[17px] text-white poppins-2">
-              Maktab mamuryati tomonidan berilgan elektron pochta hamda login parolni kiriting
-            </p>
-            <label className="my-3 text-white text-2xl poppins-2" htmlFor="">
-              Elektron pochta
-            </label>
-            <input
-              className="border-2 rounded-md outline-none py-4 px-3"
-              onChange={(e) => setEmail(e.target.value)}
-              type="text"
-              placeholder="Elektron pochta kiriting..."
-            />
-            <label className="my-3 text-white poppins-2 text-2xl" htmlFor="">
-              Login parolni kiriting
-            </label>
-            <input
-              className="border-2 rounded-md outline-none py-4 px-3"
-              onChange={(e) => setPassword(e.target.value)}
-              type="password"
-              placeholder="Login parolni kiritish..."
-            />
+            <form data-aos="fade-up" onSubmit={handleSubmit} className="login_form flex flex-col rounded-[20px] w-[50%]">
+              <h1 className="text-3xl  text-white font-[700] leading-[80px] tracking-[2%]">
+                LOGIN BILAN KIRISH
+              </h1>
+              <p className="text-[17px] text-white poppins-2">
+                Maktab mamuryati tomonidan berilgan elektron pochta hamda login parolni kiriting
+              </p>
+              <label className="my-3 text-white text-2xl poppins-2" htmlFor="">
+                Elektron pochta
+              </label>
+              <input
+                className="border-2 rounded-md outline-none py-4 px-3"
+                onChange={(e) => setEmail(e.target.value)}
+                type="text"
+                placeholder="Elektron pochta kiriting..."
+              />
+              <label className="my-3 text-white poppins-2 text-2xl" htmlFor="">
+                Login parolni kiriting
+              </label>
+              <input
+                className="border-2 rounded-md outline-none py-4 px-3"
+                onChange={(e) => setPassword(e.target.value)}
+                type="password"
+                placeholder="Login parolni kiritish..."
+              />
 
-            {loading ? (
-              <button className="green my-4 rounded-md text-white font-bold cursor-pointer px-6 py-4">
-                Tekshirilmoqda
-              </button>
-            ) : (
-              <button onClick={handleLoading} className="green my-4 rounded-md text-white font-bold cursor-pointer px-6 py-4">
-                Kirish
-              </button>
-            )}
-          </form>
+              {loading ? (
+                <button className="green my-4 rounded-md text-white font-bold cursor-pointer px-6 py-4">
+                  Tekshirilmoqda
+                </button>
+              ) : (
+                <button onClick={handleLoading} className="green my-4 rounded-md text-white font-bold cursor-pointer px-6 py-4">
+                  Kirish
+                </button>
+              )}
+            </form>
+          </div>
         </div>
       </div>
     </div>
