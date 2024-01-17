@@ -225,8 +225,8 @@
 
     .login_form_section {
         background-image: url("../public/541bf63f653c477059f8d35cb155994e1224.jpg");
-        width: 10%;
-        height: 10%;
+        width: 100%;
+        height: 200%;
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
