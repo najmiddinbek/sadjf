@@ -127,10 +127,10 @@ export default function FilterOption({ setShaxsiy, setSetShaxs, setManzili, setT
                 <option>11-D</option>
             </select>
             <div className="gap-4">
-                <label className="mb-1 text-[20px] poppins-2 text-white font-bold  " htmlFor="">
+                <label className="mb-1 text-[13px] poppins-2 text-white font-bold  " htmlFor="">
                     Familiya, Ismi hamda Otasining ismi
                 </label>
-                <select className="w-full p-3 mb-4 border  text-opacity-25 outline-none rounded-md cursor-pointer" value={selectedName} onChange={yangiIsm}>
+                <select className="w-full text-[13px] p-3 mb-4 border  text-opacity-25 outline-none rounded-md cursor-pointer" value={selectedName} onChange={yangiIsm}>
                     <option value="">Tanlang</option>
                     {mavzula
                         .filter((mavzu) => mavzu.sinf === selectedOption)
@@ -142,10 +142,10 @@ export default function FilterOption({ setShaxsiy, setSetShaxs, setManzili, setT
                 </select>
 
 
-                <label className="-mb-4 text-[20px] poppins-2 text-white font-bold">
+                <label className="-mb-4 text-[13px] poppins-2 text-white font-bold">
                     Yashash manzili
                 </label>
-                <select className="w-full p-3 mb-3 border rounded-md" onChange={handleAddressChange}>
+                <select className="w-full text-[13px] p-3 mb-3 border rounded-md" onChange={handleAddressChange}>
                     <option>Tanlang</option>
                     {mavzula
                         .filter((mavzu) => mavzu.shaxs === selectedName)
@@ -159,11 +159,11 @@ export default function FilterOption({ setShaxsiy, setSetShaxs, setManzili, setT
 
 
 
-                <label className="-mb-4 text-[20px] poppins-2 text-white font-bold">
+                <label className="-mb-4 text-[13px] poppins-2 text-white font-bold">
                     Telefon raqami
                 </label>
 
-                <select className="w-full p-3 border rounded-md" onChange={handleTelefonChange}>
+                <select className="w-full text-[13px] p-3 border rounded-md" onChange={handleTelefonChange}>
                     <option value="" >Tanlang</option>
                     {mavzula
                         .filter((mavzu) => mavzu.shaxs === selectedName)

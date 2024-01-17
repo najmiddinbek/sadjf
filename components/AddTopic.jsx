@@ -56,7 +56,7 @@ const PupilsAddClient = () => {
         <>
             <form onSubmit={handleSubmit} className="container flex flex-col gap-3">
                 <Link href={"/"}>Orqaga</Link>
-                <label className="text-[18px] poppins font-bold" htmlFor="">
+                <label className="text-[13px] poppins font-bold" htmlFor="">
                     Maktabni tanlang
                 </label>
                 <select

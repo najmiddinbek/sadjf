@@ -97,13 +97,13 @@ const PupilsAddClient = () => {
                 <div className="text-end">
                     <Link className="green rounded-md py-3 px-10 text-white button" href={"/"}>Orqaga</Link>
                 </div>
-                <label className="text-[20px] poppins-2 text-white font-bold -mb-3" htmlFor="">
+                <label className="text-[13px] poppins-2 text-white font-bold -mb-3" htmlFor="">
                     Maktabni tanlang
                 </label>
                 <select
                     onChange={(e) => setSchool(e.target.value)}
                     value={school}
-                    className="px-2 py-3 border text-opacity-25 outline-none rounded-md cursor-pointer"
+                    className="px-2 text-[13px] py-3 border text-opacity-25 outline-none rounded-md cursor-pointer"
                 >
                     <option>Bu yerdan tanlang</option>
                     {maktablar.map((maktab, index) => (
@@ -133,10 +133,10 @@ const PupilsAddClient = () => {
                             <option>3-sektor</option>
                             <option>4-sektor</option>
                         </select>
-                        <label className="text-[20px] font-bold poppins-2 text-white -mb-3" htmlFor="">
+                        <label className="text-[13px] font-bold poppins-2 text-white -mb-3" htmlFor="">
                             Qoldirilgan dars vaqti
                         </label>
-                        <select onChange={(e) => setNewDarsQoldirish(e.target.value)} value={newDarsQoldirish} className="px-2 py-3 border  text-opacity-25 outline-none rounded-md cursor-pointer">
+                        <select onChange={(e) => setNewDarsQoldirish(e.target.value)} value={newDarsQoldirish} className="px-2 py-3 border text-[13px] text-opacity-25 outline-none rounded-md cursor-pointer">
                             <option>Bu yerdan tanlang</option>
 
                             {soat.map((watch, index) => (
@@ -179,14 +179,14 @@ const PupilsAddClient = () => {
                             setManzili={setManzili}
                             setTelefoni={setTelephoneRaqami}
                         />
-                        <label className="text-[18px] poppins-2 text-white font-bold" htmlFor="">Sektor tanlang</label>
-                        <select className="px-2 py-3 cursor-no-drop border" onChange={(e) => setMFY(e.target.value)} value={MFY}>
+                        <label className="text-[13px] poppins-2 text-white font-bold" htmlFor="">Sektor tanlang</label>
+                        <select className="px-2 text-[13px] py-3 cursor-no-drop border" onChange={(e) => setMFY(e.target.value)} value={MFY}>
                             <option>Ma`lumot yo`q</option>
                         </select>
-                        <label className="text-[18px] font-bold poppins-2 text-white" htmlFor="">
+                        <label className="text-[13px] font-bold poppins-2 text-white" htmlFor="">
                             Qoldirilgan dars vaqti
                         </label>
-                        <select onChange={(e) => setNewDarsQoldirish(e.target.value)} value={newDarsQoldirish} className="border  text-opacity-25 outline-none rounded-md px-2 py-3 cursor-no-drop">
+                        <select onChange={(e) => setNewDarsQoldirish(e.target.value)} value={newDarsQoldirish} className="border  text-opacity-25 text-[13px] outline-none rounded-md px-2 py-3 cursor-no-drop">
                             <option>Malumot yo`q</option>
                         </select>
                         <div className="flex justify-end">
