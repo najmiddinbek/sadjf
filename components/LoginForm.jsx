@@ -15,15 +15,16 @@ export default function LoginForm() {
   const [error, setError] = useState("");
   const [rememberMe, setRememberMe] = useState(false);
   const [showAdditionalInput, setShowAdditionalInput] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const router = useRouter();
   useEffect(() => {
     Aos.init({ duration: 1500 });
-    const storedRememberMe = localStorage.getItem("rememberMe");
-    if (storedRememberMe) {
-      setRememberMe(JSON.parse(storedRememberMe));
-    }
   }, []);
+
+  const handleLoading = () => {
+    setLoading(true);
+  }
 
 
 
@@ -41,302 +42,10 @@ export default function LoginForm() {
       return;
     }
 
-    if (email === "O`rmanova Yoqutxon" && password === "yoqutxon88") {
-      router.replace("/pupilsAdd");
-      toast.success(`Xush kelibsiz ${email}`, {
-        position: "top-right",
-        autoClose: 10000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
-      return;
-    }
-    if (email === "superadmin" && password === "superadmin") {
-      router.replace("/SuperAdmin");
-      toast.success(`Xush kelibsiz`, {
-        position: "top-right",
-        autoClose: 10000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
-      return;
-    }
-    if (email === "Najmiddinova Nasiba" && password === "nasiba11") {
-      router.replace("/pupilsAdd");
-      toast.success(`Xush kelibsiz ${email}`, {
-        position: "top-right",
-        autoClose: 10000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
-      return;
-    }
-    if (email === "Akbarova Mashhura" && password === "mashhura14") {
-      router.replace("/pupilsAdd");
-      toast.success(`Xush kelibsiz ${email}`, {
-        position: "top-right",
-        autoClose: 10000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
-      return;
-    }
-    if (email === "Nizamova Mahliyo" && password === "mahliyo16") {
-      router.replace("/pupilsAdd");
-      toast.success(`Xush kelibsiz ${email}`, {
-        position: "top-right",
-        autoClose: 10000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
-      return;
-    }
-    if (email === "Ahmedova Dilshoda" && password === "dilshoda75") {
-      router.replace("/pupilsAdd");
-      toast.success(`Xush kelibsiz ${email}`, {
-        position: "top-right",
-        autoClose: 10000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
-      return;
-    }
-    if (email === "Dedaxo`jayeva Gulbahor" && password === "gulbahor88") {
-      router.replace("/pupilsAdd");
-      toast.success(`Xush kelibsiz ${email}`, {
-        position: "top-right",
-        autoClose: 10000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
-      return;
-    }
-    if (email === "Ibragimova Rahima" && password === "rahima71") {
-      router.replace("/pupilsAdd");
-      toast.success(`Xush kelibsiz ${email}`, {
-        position: "top-right",
-        autoClose: 10000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
-      return;
-    }
-    if (email === "Qirg`izova Xanifa" && password === "xanifa13") {
-      router.replace("/pupilsAdd");
-      toast.success(`Xush kelibsiz ${email}`, {
-        position: "top-right",
-        autoClose: 10000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
-      return;
-    }
-    if (email === "Xabbayeva Xolida" && password === "xolida65") {
-      router.replace("/pupilsAdd");
-      toast.success(`Xush kelibsiz ${email}`, {
-        position: "top-right",
-        autoClose: 10000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
-      return;
-    }
-    if (email === "Parpiyeva Umida" && password === "umida34") {
-      router.replace("/pupilsAdd");
-      toast.success(`Xush kelibsiz ${email}`, {
-        position: "top-right",
-        autoClose: 10000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
-      return;
-    }
-    if (email === "Mamurova Dilfuza" && password === "dilfuza98") {
-      router.replace("/pupilsAdd");
-      toast.success(`Xush kelibsiz ${email}`, {
-        position: "top-right",
-        autoClose: 10000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
-      return;
-    }
-    if (email === "Ismailova Gulchehra" && password === "gulchehra100") {
-      router.replace("/pupilsAdd");
-      toast.success(`Xush kelibsiz ${email}`, {
-        position: "top-right",
-        autoClose: 10000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
-      return;
-    }
-    if (email === "Mutalova Yorqinoy" && password === "yorqinoy56") {
-      router.replace("/pupilsAdd");
-      toast.success(`Xush kelibsiz ${email}`, {
-        position: "top-right",
-        autoClose: 10000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
-      return;
-    }
-    if (email === "Barchinoy" && password === "barchinoy81") {
-      router.replace("/pupilsAdd");
-      toast.success(`Xush kelibsiz ${email}`, {
-        position: "top-right",
-        autoClose: 10000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
-      return;
-    }
-    if (email === "Muradov Mahmudjon" && password === "mahmudjon25") {
-      router.replace("/pupilsAdd");
-      toast.success(`Xush kelibsiz ${email}`, {
-        position: "top-right",
-        autoClose: 10000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
-      return;
-    }
-    if (email === "Mamurjon" && password === "mamurjon30") {
-      router.replace("/pupilsAdd");
-      toast.success(`Xush kelibsiz ${email}`, {
-        position: "top-right",
-        autoClose: 10000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
-      return;
-    }
-    if (email === "Nargiza" && password === "nargiza18") {
-      router.replace("/pupilsAdd");
-      toast.success(`Xush kelibsiz ${email}`, {
-        position: "top-right",
-        autoClose: 10000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
-      return;
-    }
-    if (email === "Ubayeva Feruza" && password === "ubayevaferuza99") {
-      router.replace("/pupilsAdd");
-      toast.success(`Xush kelibsiz ${email}`, {
-        position: "top-right",
-        autoClose: 10000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
-      return;
-    }
-    if (email === "Abbasova Naima" && password === "naima122") {
-      router.replace("/pupilsAdd");
-      toast.success(`Xush kelibsiz ${email}`, {
-        position: "top-right",
-        autoClose: 10000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
-      return;
-    }
-    if (email === "Mehmanova Zebohon" && password === "zebohon72") {
-      router.replace("/pupilsAdd");
-      toast.success(`Xush kelibsiz ${email}`, {
-        position: "top-right",
-        autoClose: 10000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
-      return;
-    }
 
-    if (email === "Islomjon" && password === "islomjon08") {
+
+
+    if (email === "Mashrapov Alijon" && password === "alijon77" || email === "O`rmanova Yoqutxon" && password === "yoqutxon88" || email === "Mashrapov Alijon" && password === "alijon77" || email === "Elyorbek" && password === "elyorbek05" || email === "Sohibboy" && password === "sohibboy68" || email === "Boyxanova Muqaddas" && password === "muqaddas09" || email === "Mashrapov Alijon" && password === "alijonmashrapov" || email === "Nuriddinova Mohira" && password === "mohira90" || email === "Otaboyev Botirjon" && password === "otaboyev69" || email === "Saydullayev Muhammad" && password === "saydullayev45" || email === "Shojalilova Muyassar" && password === "muyassar111" || email === "Chinixon" && password === "chinixon108" || email === "Mamadaliyev Athamjon" && password === "athamjon32" || email === "Tojiboyeva Tursunoy" && password === "tursunoy22" || email === "Mahmudov Ikromjon" && password === "ikromjon77" || email === "Mehmanova Sharipa" && password === "sharipa70" || email === "Qozaqova Rohathon" && password === "rohathon67" || email === "Mahkamova Karima" && password === "karima44" || email === "Islomjon" && password === "islomjon08" || email === "Mehmanova Zebohon" && password === "zebohon72" || email === "Abbasova Naima" && password === "naima122" || email === "Ubayeva Feruza" && password === "ubayevaferuza99" || email === "Nargiza" && password === "nargiza18" || email === "Mamurjon" && password === "mamurjon30" || email === "Muradov Mahmudjon" && password === "mahmudjon25" || email === "Barchinoy" && password === "barchinoy81" || email === "Mutalova Yorqinoy" && password === "yorqinoy56" || email === "Ismailova Gulchehra" && password === "gulchehra100" || email === "Mamurova Dilfuza" && password === "dilfuza98" || email === "Parpiyeva Umida" && password === "umida34" || email === "Xabbayeva Xolida" && password === "xolida65" || email === "Qirg`izova Xanifa" && password === "xanifa13" || email === "Ibragimova Rahima" && password === "rahima71" || email === "Dedaxo`jayeva Gulbahor" && password === "gulbahor88" || email === "Ahmedova Dilshoda" && password === "dilshoda75" || email === "Nizamova Mahliyo" && password === "mahliyo16" || email === "Akbarova Mashhura" && password === "mashhura14" || email === "Najmiddinova Nasiba" && password === "nasiba11") {
       router.replace("/pupilsAdd");
       toast.success(`Xush kelibsiz ${email}`, {
         position: "top-right",
@@ -348,234 +57,16 @@ export default function LoginForm() {
         progress: undefined,
         theme: "light",
       });
-      return;
+    } else {
+      setLoading(true);
+      toast.error(`Noto'g'ri malumot kiritildi, Sahifa yangilanishini kuting...`)
+      setTimeout(() => {
+        location.reload();
+      }, 5000)
     }
-    if (email === "Mahkamova Karima" && password === "karima44") {
-      router.replace("/pupilsAdd");
-      toast.success(`Xush kelibsiz ${email}`, {
-        position: "top-right",
-        autoClose: 10000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
-      return;
-    }
-    if (email === "Qozaqova Rohathon" && password === "rohathon67") {
-      router.replace("/pupilsAdd");
-      toast.success(`Xush kelibsiz ${email}`, {
-        position: "top-right",
-        autoClose: 10000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
-      return;
-    }
-    if (email === "Mehmanova Sharipa" && password === "sharipa70") {
-      router.replace("/pupilsAdd");
-      toast.success(`Xush kelibsiz ${email}`, {
-        position: "top-right",
-        autoClose: 10000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
-      return;
-    }
-    if (email === "Mahmudov Ikromjon" && password === "ikromjon77") {
-      router.replace("/pupilsAdd");
-      toast.success(`Xush kelibsiz ${email}`, {
-        position: "top-right",
-        autoClose: 10000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
-      return;
-    }
-    if (email === "Tojiboyeva Tursunoy" && password === "tursunoy22") {
-      router.replace("/pupilsAdd");
-      toast.success(`Xush kelibsiz ${email}`, {
-        position: "top-right",
-        autoClose: 10000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
-      return;
-    }
-    if (email === "Mamadaliyev Athamjon" && password === "athamjon32") {
-      router.replace("/pupilsAdd");
-      toast.success(`Xush kelibsiz ${email}`, {
-        position: "top-right",
-        autoClose: 10000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
-      return;
-    }
-    if (email === "Chinixon" && password === "chinixon108") {
-      router.replace("/pupilsAdd");
-      toast.success(`Xush kelibsiz ${email}`, {
-        position: "top-right",
-        autoClose: 10000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
-      return;
-    }
-    if (email === "Shojalilova Muyassar" && password === "muyassar111") {
-      router.replace("/pupilsAdd");
-      toast.success(`Xush kelibsiz ${email}`, {
-        position: "top-right",
-        autoClose: 10000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
-      return;
-    }
-    if (email === "Saydullayev Muhammad" && password === "saydullayev45") {
-      router.replace("/pupilsAdd");
-      toast.success(`Xush kelibsiz ${email}`, {
-        position: "top-right",
-        autoClose: 10000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
-      return;
-    }
-    if (email === "Otaboyev Botirjon" && password === "otaboyev69") {
-      router.replace("/pupilsAdd");
-      toast.success(`Xush kelibsiz ${email}`, {
-        position: "top-right",
-        autoClose: 10000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
-      return;
-    }
-    if (email === "Nuriddinova Mohira" && password === "mohira90") {
-      router.replace("/pupilsAdd");
-      toast.success(`Xush kelibsiz ${email}`, {
-        position: "top-right",
-        autoClose: 10000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
-      return;
-    }
-    if (email === "Mashrapov Alijon" && password === "alijonmashrapov") {
-      router.replace("/pupilsAdd");
-      toast.success(`Xush kelibsiz ${email}`, {
-        position: "top-right",
-        autoClose: 10000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
-      return;
-    }
-    if (email === "Boyxanova Muqaddas" && password === "muqaddas09") {
-      router.replace("/pupilsAdd");
-      toast.success(`Xush kelibsiz ${email}`, {
-        position: "top-right",
-        autoClose: 10000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
-      return;
-    }
-    if (email === "Sohibboy" && password === "sohibboy68") {
-      router.replace("/pupilsAdd");
-      toast.success(`Xush kelibsiz ${email}`, {
-        position: "top-right",
-        autoClose: 10000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
-      return;
-    }
-    if (email === "Elyorbek" && password === "elyorbek05") {
-      router.replace("/pupilsAdd");
-      toast.success(`Xush kelibsiz ${email}`, {
-        position: "top-right",
-        autoClose: 10000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
-      return;
-    }
-    if (email === "Mashrapov Alijon" && password === "alijon77") {
-      router.replace("/pupilsAdd");
-      toast.success(`Xush kelibsiz ${email}`, {
-        position: "top-right",
-        autoClose: 10000,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "light",
-      });
-      return;
-    }
-    if (!email || !password) {
-      toast.error("Please enter valid credentials", {
+    if (!password) {
+      setLoading(false);
+      toast.error("Barcha maydonlarni to`ldiring!", {
         position: "top-center",
         autoClose: 10000,
         hideProgressBar: false,
@@ -586,18 +77,6 @@ export default function LoginForm() {
         theme: "light",
       });
       return;
-    }
-
-    try {
-      const res = await signIn("credentials", {
-        email,
-        password,
-        redirect: false,
-      });
-
-      router.push("/pupilsAdd");
-    } catch (error) {
-      console.log(error);
     }
   };
 
@@ -641,9 +120,16 @@ export default function LoginForm() {
               type="password"
               placeholder="Login parolni kiritish..."
             />
-            <button className="green my-4 rounded-md text-white font-bold cursor-pointer px-6 py-4">
-              Kirish
-            </button>
+
+            {loading ? (
+              <button className="green my-4 rounded-md text-white font-bold cursor-pointer px-6 py-4">
+                Tekshirilmoqda
+              </button>
+            ) : (
+              <button onClick={handleLoading} className="green my-4 rounded-md text-white font-bold cursor-pointer px-6 py-4">
+                Kirish
+              </button>
+            )}
           </form>
         </div>
       </div>
