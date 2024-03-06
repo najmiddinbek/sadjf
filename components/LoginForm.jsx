@@ -73,7 +73,8 @@ export default function LoginForm() {
       (email === "Ahmedova Dilshoda" && password === "dilshoda75") ||
       (email === "Nizamova Mahliyo" && password === "mahliyo16") ||
       (email === "Akbarova Mashhura" && password === "mashhura14") ||
-      (email === "Najmiddinova Nasiba" && password === "nasiba11")
+      (email === "Najmiddinova Nasiba" && password === "nasiba11") ||
+      (email === "admin" && password === "3-maktab")
     ) {
       router.replace("/pupilsAdd");
       toast.success(`Xush kelibsiz ${email}`, {
