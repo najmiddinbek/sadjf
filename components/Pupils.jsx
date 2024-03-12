@@ -128,6 +128,7 @@ const PupilsAddClient = () => {
 						className='px-2 py-3 border text-[13px] text-opacity-25 outline-none rounded-md cursor-pointer'
 					>
 						<option>Bu yerdan tanlang</option>
+						<option>Sababli</option>
 
 						{soat.map((watch, index) => (
 							<option key={index}>{watch}-soat</option>

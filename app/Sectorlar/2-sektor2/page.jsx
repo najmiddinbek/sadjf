@@ -295,6 +295,12 @@ const Filter = () => {
 											{date} sanasida kiritilgan o`quvchilar:
 										</h3>
 										<div className='flex gap-2'>
+											<Link
+												href={'/SuperAdmin'}
+												className='green text-white flex justify-center items-center rounded-md cursor-pointer px-2'
+											>
+												Admin Panel
+											</Link>
 											<button
 												className={`${
 													filterStatus === true ? 'green' : 'green'
