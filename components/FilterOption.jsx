@@ -112,7 +112,8 @@ export default function FilterOption({
 			try {
 				if (selectedTelephoneNumber && selectedName && newDarsQoldirish) {
 					const response = await fetch(`
-                    https://smsapp.uz/new/services/send.php?key=155e4cdd9e529617123e2630dc863875274cf4b6&number=%2B998${selectedTelephoneNumber}&message=Фарзандингиз+${selectedName}+бугун+${newDarsQoldirish}+соат+дарс+колдирди.+Фарзандига+таьлим+бериш+мажбуриятини+бажармаслик+маьмурий+жавобгарликка+сабаб+булади.&devices=1121&type=sms&prioritize=0`)
+					https://smsapp.uz/new/services/send.php?key=155e4cdd9e529617123e2630dc863875274cf4b6&number=%2B998${selectedTelephoneNumber}&message=Фарзандингиз+${selectedName}+бугун+${newDarsQoldirish}+соат+дарс+колдирди.+Фарзандига+таьлим+бериш+мажбуриятини+бажармаслик+маьмурий+жавобгарликка+сабаб+булади.&devices=%5B%221161%7C0%22%2C%221161%7C1%22%5D&type=sms&prioritize=0
+										`)
 
 					if (response.ok) {
 						const data = await response.json()
@@ -152,12 +153,15 @@ export default function FilterOption({
 				<option>5-A</option>
 				<option>5-B</option>
 				<option>5-D</option>
+				<option>5-E</option>
 				<option>6-A</option>
 				<option>6-B</option>
 				<option>6-D</option>
+				<option>6-E</option>
 				<option>7-A</option>
 				<option>7-B</option>
 				<option>7-D</option>
+				<option>7-E</option>
 				<option>8-A</option>
 				<option>8-B</option>
 				<option>8-D</option>
@@ -165,9 +169,11 @@ export default function FilterOption({
 				<option>9-A</option>
 				<option>9-B</option>
 				<option>9-D</option>
+				<option>9-E</option>
 				<option>10-A</option>
 				<option>10-B</option>
 				<option>10-D</option>
+				<option>10-E</option>
 				<option>11-A</option>
 				<option>11-B</option>
 				<option>11-D</option>
@@ -189,7 +195,7 @@ export default function FilterOption({
 						.filter(mavzu => mavzu.sinf === selectedOption)
 						.map((mavzu, index) => (
 							<option className='' key={index} value={mavzu.shaxs}>
-								{mavzu.shaxs} {mavzu.adress}
+								{mavzu.shaxs}
 							</option>
 						))}
 				</select>
